@@ -2,11 +2,13 @@ import React from 'react';
 
 import Container from './styles';
 
+import { Link } from 'react-router-dom';
+
 export default () => {
 
   return (
     <Container>
-      header
+      <Link to='/'>todo-io</Link>
     </Container>
   )
 }
