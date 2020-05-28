@@ -8,6 +8,7 @@ export default createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
     width: 100%;
+    height: 100%;
   }
 
   html body #root{
