@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import * as PostActions from '../../../store/actions/PostActions';
+
 import Container from './styles';
 
 export default () => {
 
+  const dispatch = useDispatch();
+
   const [ titulo, setTitulo ] = useState('');
   const [ conteudo, setConteudo ] = useState('');
-
 
   const setter = set => e => {
     set(e.target.value);
@@ -14,8 +18,7 @@ export default () => {
 
   const handlerSubmitForm = (titulo, conteudo) => e => {
     e.preventDefault();
-    console.log(titulo);
-    console.log(conteudo);
+    dispatch(PostActions.create({ titulo, conteudo }));
   }
 
   return (
