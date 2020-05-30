@@ -13,3 +13,14 @@ export const sucessoCreate = post => ({
     ...post
   }
 });
+
+export const read = () => ({
+  type: tipos.READ
+});
+
+export const sucessoRead = posts => ({
+  type: tipos.SUCESSO_READ, 
+  payload: {
+    posts
+  }
+});

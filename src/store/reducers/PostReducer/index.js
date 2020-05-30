@@ -10,6 +10,11 @@ export default (state=INITIAL_STATE, action) => {
       return post;
     }
 
+    case 'SUCESSO_READ': {
+      const { posts } = action.payload;
+      return posts;
+    }
+
     case 'ALTERACAO_POST': {
       const { posts } = action.payload;
       return posts;

@@ -8,7 +8,6 @@ export default createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
   }
 
   html body #root{
@@ -16,6 +15,7 @@ export default createGlobalStyle`
     background: white;
     color: #333;
     -webkit-font-smoothing: antialiased !important;
+    width: 100%;
   }
 
   ul {

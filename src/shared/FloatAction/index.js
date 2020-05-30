@@ -4,12 +4,13 @@ import Container from './styles';
 
 import { Link } from 'react-router-dom';
 
-export default ({ action }) => {
+import Action from '../Action';
+
+export default ({ redirect, icon }) => {
 
   return (
     <Container>
-      { action && action }
-      <Link to='/'>todo-io</Link>
+      <Action action={<Link to={redirect} >{ icon }</Link>} />  
     </Container>
-  )
+  );
 }
