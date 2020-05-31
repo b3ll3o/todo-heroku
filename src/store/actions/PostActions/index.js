@@ -24,3 +24,24 @@ export const sucessoRead = posts => ({
     posts
   }
 });
+
+export const deletePost = id => ({
+  type: tipos.DELETE, 
+  payload: {
+    id
+  }
+});
+
+export const sucessoDeletePost = posts => ({
+  type: tipos.SUCESSO_DELETE, 
+  payload: {
+    posts
+  }
+});
+
+export const alteracaoPosts = posts => ({
+  type: tipos.ALTERACAO_POSTS, 
+  payload: {
+    posts
+  }
+});

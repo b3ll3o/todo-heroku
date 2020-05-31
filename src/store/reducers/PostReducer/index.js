@@ -15,7 +15,7 @@ export default (state=INITIAL_STATE, action) => {
       return posts;
     }
 
-    case 'ALTERACAO_POST': {
+    case 'ALTERACAO_POSTS': {
       const { posts } = action.payload;
       return posts;
     }

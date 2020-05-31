@@ -9,13 +9,14 @@ export default styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
 
-  div{
+  .content{
     display: flex;
     flex-direction: column;
     margin-bottom: .75rem;
     height: fit-content;
     padding: .5rem;
     background-color: ${props => props.theme.cores.terceira};
+    
     span{
 
       &.titulo{
