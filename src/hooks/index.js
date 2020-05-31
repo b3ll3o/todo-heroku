@@ -27,5 +27,20 @@ export const useDeletePost = id => {
   }
 
   return deletePost;
+}
+
+export const useAdicionaPost = (titulo, conteudo) => {
+
+  const dispatch = useDispatch();
+
+  const adicionaPost = e => {
+    e.preventDefault();
+    dispatch(PostActions.create({ titulo, conteudo }));
+  }
+
+  return adicionaPost;
+}
+
+export const useEditPost = id => {
 
 }

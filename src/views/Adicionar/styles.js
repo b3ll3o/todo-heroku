@@ -8,8 +8,4 @@ export default styled.div`
   height: 100vh;
   background-color: ${props => props.theme.cores.segunda};
 
-  form {
-
-    margin-top: 4rem;
-  }
 `;

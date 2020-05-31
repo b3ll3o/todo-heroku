@@ -5,6 +5,7 @@ import Container from './styles';
 import { useDeletePost } from '../../../hooks';
 
 import DeleteAction from '../../../shared/DeleteAction';
+import EditAction from '../../../shared/EditAction';
 
 export default ({ posts }) => {
 
@@ -15,6 +16,7 @@ export default ({ posts }) => {
           <span className='titulo' >{post.titulo}</span>
           <span className='conteudo' >{post.conteudo}</span>
           <DeleteAction action={useDeletePost(post.id)} />
+          <EditAction />
         </div>
       )}
     </Container>

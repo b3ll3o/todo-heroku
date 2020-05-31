@@ -2,5 +2,7 @@ import styled from 'styled-components';
 
 export default styled.div`
 
-  margin-top: 4.5rem;
-`
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+`;
