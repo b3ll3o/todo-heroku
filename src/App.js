@@ -7,6 +7,7 @@ import colored from './styles/themes/colored';
 
 import Listagem from './views/Listagem';
 import Adicionar from './views/Adicionar';
+import Editar from './views/Editar';
 
 export default () => (
   
@@ -18,6 +19,10 @@ export default () => (
 
       <Route path='/add'>
         <Adicionar />
+      </Route>
+
+      <Route path='/edit/:id'>
+        <Editar />
       </Route>
     </Router>
   </ThemeProvider>

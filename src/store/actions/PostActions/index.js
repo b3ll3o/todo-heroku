@@ -45,3 +45,17 @@ export const alteracaoPosts = posts => ({
     posts
   }
 });
+
+export const edit = post => ({
+  type: tipos.EDIT, 
+  payload: {
+    ...post
+  }
+});
+
+export const findById = id => ({
+  type: tipos.FIND_BY_ID, 
+  payload: {
+    id
+  }
+});

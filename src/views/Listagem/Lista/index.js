@@ -2,23 +2,11 @@ import React from 'react';
 
 import Container from './styles';
 
-import { useDeletePost } from '../../../hooks';
+import Post from './Post';
 
-import DeleteAction from '../../../shared/DeleteAction';
-import EditAction from '../../../shared/EditAction';
+export default ({ posts }) => (
+  <Container>
+    { posts && posts.map(post => <Post {...post} />) }
+  </Container>
+);
 
-export default ({ posts }) => {
-
-  return (
-    <Container>
-      { posts && posts.map(post =>
-        <div className='content'>
-          <span className='titulo' >{post.titulo}</span>
-          <span className='conteudo' >{post.conteudo}</span>
-          <DeleteAction action={useDeletePost(post.id)} />
-          <EditAction />
-        </div>
-      )}
-    </Container>
-  );
-}

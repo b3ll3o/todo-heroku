@@ -4,13 +4,15 @@ import Container from './styles';
 
 import { ReactComponent as EditIcon } from '../../assets/icons/edit.svg';
 
+import { Link } from 'react-router-dom';
+
 import Action from '../Action';
 
-export default () => {
+export default ({ action, redirect }) => {
 
   return (
     <Container>
-      <Action action={<EditIcon />} />
+      { redirect && <Action action={<Link to={redirect}><EditIcon /></Link>} /> }
     </Container>
   )
 }

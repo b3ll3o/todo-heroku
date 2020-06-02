@@ -38,8 +38,34 @@ function* deletePost(action){
   yield put(PostActions.alteracaoPosts(newPosts));
 }
 
+function* edit(action) {
+  const { id, titulo, conteudo } = action.payload;
+
+  const posts = LocalStorageService.get();
+
+  const postsEditados = posts.map(post => post.id === id
+    ? { id, titulo, conteudo }
+    : post);
+
+  LocalStorageService.set(postsEditados);
+
+  yield put(PostActions.alteracaoPosts(postsEditados));
+}
+
+function* findById(action){
+  const { id } = action.payload;
+
+  const posts = LocalStorageService.get();
+
+  const post = posts.filter(post => post.id === id)[0];
+
+  yield put(PostActions.sucessoRead(post));
+}
+
 export default function* sagas(){
   yield takeLatest(TiposPostsActions.CREATE_POST, create);
   yield takeLatest(TiposPostsActions.READ, read);
   yield takeLatest(TiposPostsActions.DELETE, deletePost);
+  yield takeLatest(TiposPostsActions.EDIT, edit);
+  yield takeLatest(TiposPostsActions.FIND_BY_ID, findById);
 }

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as PostActions from '../store/actions/PostActions';
 
 export const useGetPosts = () => {
@@ -41,6 +41,24 @@ export const useAdicionaPost = (titulo, conteudo) => {
   return adicionaPost;
 }
 
-export const useEditPost = id => {
+export const useEditPost = (id, tituloEditado, conteudoEditado) => {
+  
+  const dispatch = useDispatch();
 
+  const isCarregado = posts => (
+    posts.length > 0
+  )
+
+  const { titulo, conteudo } = useSelector(state => isCarregado(state.posts)
+    ? state.posts.filter(post => post.id === id)[0]
+    : { titulo: '', conteudo: '' });
+
+  useGetPosts()
+
+  const editPost = e => {
+    e.preventDefault();
+    dispatch(PostActions.edit({ id, titulo: tituloEditado, conteudo: conteudoEditado }));
+  }
+
+  return [titulo, conteudo, editPost];
 }
