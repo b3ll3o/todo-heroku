@@ -7,8 +7,8 @@ import LocalStorageService from './service';
 import * as PostActions from '../../actions/PostActions';
 import TiposPostsActions from '../../actions/PostActions/tipos';
 
-const createNewPost = (titulo, conteudo) => ({
-  id: uuid(), titulo, conteudo, fixado: false
+const createNewPost = (titulo, conteudo, fixado) => ({
+  id: uuid(), titulo, conteudo, fixado
 });
 
 const ordenaPosts = posts => (
@@ -16,12 +16,12 @@ const ordenaPosts = posts => (
 )
 
 function* create(action){
-  const { titulo, conteudo } = action.payload;
+  const { titulo, conteudo, fixado } = action.payload;
   const posts = LocalStorageService.get();
   
   const newPosts = posts 
-    ? [ ...posts, createNewPost(titulo, conteudo)]
-    : [createNewPost(titulo, conteudo)];
+    ? [ ...posts, createNewPost(titulo, conteudo, fixado)]
+    : [createNewPost(titulo, conteudo, fixado)];
   
   LocalStorageService.set(newPosts);
   yield put(PostActions.sucessoCreate(newPosts));
