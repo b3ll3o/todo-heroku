@@ -20,6 +20,11 @@ export default (state=INITIAL_STATE, action) => {
       return posts;
     }
 
+    case 'SUCESSO': {
+      const { posts } = action.payload;
+      return posts;
+    }
+
     default: 
       return state;
   }

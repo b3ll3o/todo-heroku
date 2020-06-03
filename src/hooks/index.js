@@ -42,18 +42,18 @@ export const useAdicionaPost = (titulo, conteudo) => {
 }
 
 export const useEditPost = (id, tituloEditado, conteudoEditado) => {
+
+  useGetPosts();
   
   const dispatch = useDispatch();
 
   const isCarregado = posts => (
     posts.length > 0
-  )
+  );
 
   const { titulo, conteudo } = useSelector(state => isCarregado(state.posts)
     ? state.posts.filter(post => post.id === id)[0]
     : { titulo: '', conteudo: '' });
-
-  useGetPosts()
 
   const editPost = e => {
     e.preventDefault();
@@ -61,4 +61,15 @@ export const useEditPost = (id, tituloEditado, conteudoEditado) => {
   }
 
   return [titulo, conteudo, editPost];
+}
+
+export const useFixadorPost = id => {
+
+  const dispatch = useDispatch();
+
+  const fixaPost = () => {
+    dispatch(PostActions.fixadorPost(id));
+  }
+
+  return fixaPost;
 }

@@ -59,3 +59,17 @@ export const findById = id => ({
     id
   }
 });
+
+export const fixadorPost = id => ({
+  type: tipos.FIXADOR_POST,
+  payload: {
+    id
+  }
+});
+
+export const sucesso = posts => ({
+  type: tipos.SUCESSO, 
+  payload: {
+    posts
+  }
+});
