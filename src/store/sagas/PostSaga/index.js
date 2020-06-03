@@ -9,7 +9,11 @@ import TiposPostsActions from '../../actions/PostActions/tipos';
 
 const createNewPost = (titulo, conteudo) => ({
   id: uuid(), titulo, conteudo, fixado: false
-})
+});
+
+const ordenaPosts = posts => (
+  posts.sort((a, b) => !a.fixado && b.fixado ? 1 : -1)
+)
 
 function* create(action){
   const { titulo, conteudo } = action.payload;
@@ -24,7 +28,11 @@ function* create(action){
 }
 
 function* read(){
-  yield put(PostActions.sucessoRead(LocalStorageService.get()));
+
+  const posts = LocalStorageService.get();
+
+  const postsOrdenados = ordenaPosts(posts);
+  yield put(PostActions.sucesso(postsOrdenados));
 }
 
 function* deletePost(action){
@@ -84,7 +92,7 @@ function* fixadorPost(action){
 
   LocalStorageService.set(fixadorPost);
 
-  yield put(PostActions.sucesso(fixadorPost));
+  yield put(PostActions.sucesso(ordenaPosts(fixadorPost)));
 }
 
 export default function* sagas(){
