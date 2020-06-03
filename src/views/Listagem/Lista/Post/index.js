@@ -10,10 +10,14 @@ import FixadorAction from '../../../../shared/FixadorAction';
 
 export default ({ id, titulo, conteudo, fixado }) => (
   <Container>
-    <span className='titulo' >{titulo}</span>
-    <FixadorAction status={fixado && fixado} actionClick={useFixadorPost(id)} />
+    <div className='destaque'>
+      <span className='titulo' >{titulo}</span>
+      <FixadorAction status={fixado && fixado} actionClick={useFixadorPost(id)} />
+    </div>
     <span className='conteudo' >{conteudo}</span>
-    <DeleteAction action={useDeletePost(id)} />
-    <EditAction redirect={'/edit/' + id} />
+    <div className='actions'>
+      <DeleteAction action={useDeletePost(id)} />
+      <EditAction redirect={'/edit/' + id} />
+    </div>
   </Container>
 )

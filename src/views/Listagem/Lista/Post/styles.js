@@ -8,6 +8,16 @@ export default styled.div`
   height: fit-content;
   padding: .5rem;
   background-color: ${props => props.theme.cores.terceira};
+
+  .destaque{
+    display: flex;
+  }
+
+  .actions{
+    display: flex;
+    justify-content: space-around;
+    margin-top: .5rem;
+  }
   
   span{
 
