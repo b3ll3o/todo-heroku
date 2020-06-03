@@ -8,6 +8,7 @@ import { useEditPost } from '../../hooks';
 
 import Form from '../../shared/Form';
 import Header from '../../shared/Header';
+import FixadorAction from '../../shared/FixadorAction';
 
 export default () => {
 
@@ -15,12 +16,17 @@ export default () => {
 
   const [ tituloEditado, setTituloEditado ] = useState('');
   const [ conteudoEditado, setConteudoEditado ] = useState('');
+  const [ fixadoEditado, setFixadoEditado ] = useState(false);
 
-  const [ titulo, conteudo, editPost ] = useEditPost(id, tituloEditado, conteudoEditado);
+  const [ titulo, conteudo, fixado, editPost ] = useEditPost(id, tituloEditado, conteudoEditado, fixadoEditado);
 
   const setter = set => e => {
     e.preventDefault();
     set(e.target.value);
+  }
+
+  const handlerChangeFixador = () => {
+    setFixadoEditado(!fixadoEditado);
   }
 
   return (
@@ -31,6 +37,7 @@ export default () => {
         campos={
           <>
             <input defaultValue={titulo && titulo} onChange={setter(setTituloEditado)} />
+            <FixadorAction defaultValue={fixado && fixado}  status={fixadoEditado} actionClick={handlerChangeFixador} />
             <textarea defaultValue={conteudo && conteudo} onChange={setter(setConteudoEditado)} ></textarea>
             <button type='submit'>Editar</button>
           </>

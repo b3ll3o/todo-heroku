@@ -47,12 +47,12 @@ function* deletePost(action){
 }
 
 function* edit(action) {
-  const { id, titulo, conteudo } = action.payload;
+  const { id, titulo, conteudo, fixado } = action.payload;
 
   const posts = LocalStorageService.get();
 
   const postsEditados = posts.map(post => post.id === id
-    ? { id, titulo, conteudo, fixado: post.fixado }
+    ? { id, titulo, conteudo, fixado }
     : post);
 
   LocalStorageService.set(postsEditados);

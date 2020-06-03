@@ -41,7 +41,7 @@ export const useAdicionaPost = (titulo, conteudo, fixado) => {
   return adicionaPost;
 }
 
-export const useEditPost = (id, tituloEditado, conteudoEditado) => {
+export const useEditPost = (id, tituloEditado, conteudoEditado, fixadoEditado) => {
 
   useGetPosts();
   
@@ -51,16 +51,16 @@ export const useEditPost = (id, tituloEditado, conteudoEditado) => {
     posts.length > 0
   );
 
-  const { titulo, conteudo } = useSelector(state => isCarregado(state.posts)
+  const { titulo, conteudo, fixado } = useSelector(state => isCarregado(state.posts)
     ? state.posts.filter(post => post.id === id)[0]
-    : { titulo: '', conteudo: '' });
+    : { titulo: '', conteudo: '', fixado: false });
 
   const editPost = e => {
-    e.preventDefault();
-    dispatch(PostActions.edit({ id, titulo: tituloEditado, conteudo: conteudoEditado }));
+    e.preventDefault(); 
+    dispatch(PostActions.edit({ id, titulo: tituloEditado, conteudo: conteudoEditado, fixado: fixadoEditado }));
   }
 
-  return [titulo, conteudo, editPost];
+  return [titulo, conteudo, fixado, editPost];
 }
 
 export const useFixadorPost = id => {
