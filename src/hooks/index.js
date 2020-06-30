@@ -55,9 +55,26 @@ export const useEditPost = (id, tituloEditado, conteudoEditado, fixadoEditado) =
     ? state.posts.filter(post => post.id === id)[0]
     : { titulo: '', conteudo: '', fixado: false });
 
+  const setDefault = valor => novoValor => (
+    novoValor === '' || novoValor === undefined || novoValor === null
+      ? valor
+      : novoValor
+  );
+
+  const setTitulo = setDefault(titulo);
+  const setConteudo = setDefault(conteudo);
+  const setFixado = setDefault(fixado);
+
+
   const editPost = e => {
     e.preventDefault(); 
-    dispatch(PostActions.edit({ id, titulo: tituloEditado, conteudo: conteudoEditado, fixado: fixadoEditado }));
+
+    dispatch(PostActions.edit({ 
+      id, 
+      titulo: setTitulo(tituloEditado),
+      conteudo: setConteudo(conteudoEditado), 
+      fixado: setFixado(fixadoEditado)
+    }));
   }
 
   return [titulo, conteudo, fixado, editPost];
