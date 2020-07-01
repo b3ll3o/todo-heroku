@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Container from './styles';
 
@@ -25,8 +25,12 @@ export default () => {
     set(e.target.value);
   }
 
+  useEffect(() => {
+    setFixadoEditado(fixado)
+  }, [ fixado, setFixadoEditado ]);
+
   const handlerChangeFixador = () => {
-    setFixadoEditado(!fixadoEditado);
+    setFixadoEditado(!fixadoEditado);   
   }
 
   return (
@@ -37,7 +41,7 @@ export default () => {
         campos={
           <>
             <input defaultValue={titulo && titulo} onChange={setter(setTituloEditado)} />
-            <FixadorAction defaultValue={fixado && fixado}  status={fixadoEditado} actionClick={handlerChangeFixador} />
+            <FixadorAction status={fixadoEditado} actionClick={handlerChangeFixador} />
             <textarea defaultValue={conteudo && conteudo} onChange={setter(setConteudoEditado)} ></textarea>
             <button type='submit'>Editar</button>
           </>
