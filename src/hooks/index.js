@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import * as PostActions from '../store/actions/PostActions';
 
@@ -41,11 +43,12 @@ export const useAdicionaPost = (titulo, conteudo, fixado) => {
   return adicionaPost;
 }
 
-export const useEditPost = (id, tituloEditado, conteudoEditado, fixadoEditado) => {
+export const useEditPost = (id, tituloEditado, conteudoEditado, fixadoEditado, redirectPath='') => {
 
   useGetPosts();
   
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const isCarregado = posts => (
     posts.length > 0
@@ -75,6 +78,9 @@ export const useEditPost = (id, tituloEditado, conteudoEditado, fixadoEditado) =
       conteudo: setConteudo(conteudoEditado), 
       fixado: setFixado(fixadoEditado)
     }));
+
+    if(redirectPath !== '')
+      history.push(redirectPath);
   }
 
   return [titulo, conteudo, fixado, editPost];

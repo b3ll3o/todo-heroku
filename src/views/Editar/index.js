@@ -18,7 +18,7 @@ export default () => {
   const [ conteudoEditado, setConteudoEditado ] = useState('');
   const [ fixadoEditado, setFixadoEditado ] = useState(false);
 
-  const [ titulo, conteudo, fixado, editPost ] = useEditPost(id, tituloEditado, conteudoEditado, fixadoEditado);
+  const [ titulo, conteudo, fixado, editPost ] = useEditPost(id, tituloEditado, conteudoEditado, fixadoEditado, '/');
 
   const setter = set => e => {
     e.preventDefault();
